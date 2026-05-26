@@ -39,9 +39,9 @@ unsigned long delay3;
 unsigned long delay4;
 
 // -----------------------------
-// Фиксированная длительность импульса для всех катушек (10 мс)
+// Фиксированная длительность импульса для всех катушек (150 мкс)
 // -----------------------------
-const unsigned long pulseDuration = 10000;
+const unsigned long pulseDuration = 150;
 
 // -----------------------------
 // Инициализация LCD-дисплея
@@ -81,7 +81,7 @@ void setup() {
     // Сообщение о версии прошивки
     lcd.clear();                          // Очистка экрана
     centerText("Firmware version", 0);    // Текст на строке 0
-    centerText("24052026", 1);            // Версия на строке 1
+    centerText("26052026", 1);            // Версия на строке 1
     delay(2000);                          // Задержка
     lcd.clear();                          // Очистка экрана
 
@@ -120,10 +120,10 @@ void loop() {
 // Чтение значений с потенциометров
 // -----------------------------
 void readPotentiometers() {
-    delay1 = map(analogRead(pot1), 0, 1023, 0, 10000);  // 0-10000 мкс
-    delay2 = map(analogRead(pot2), 0, 1023, 0, 10000);  // 0-10000 мкс
-    delay3 = map(analogRead(pot3), 0, 1023, 0, 10000);  // 0-10000 мкс
-    delay4 = map(analogRead(pot4), 0, 1023, 0, 10000);  // 0-10000 мкс
+    delay1 = map(analogRead(pot1), 0, 1023, 0, 3000);  // 0-3000 мкс
+    delay2 = map(analogRead(pot2), 0, 1023, 0, 3000);  // 0-3000 мкс
+    delay3 = map(analogRead(pot3), 0, 1023, 0, 3000);  // 0-3000 мкс
+    delay4 = map(analogRead(pot4), 0, 1023, 0, 3000);  // 0-3000 мкс
 }
 
 // -----------------------------
@@ -162,7 +162,7 @@ void dischargeCapacitors() {
     digitalWrite(trnPin4, HIGH);
     digitalWrite(trnPin5, HIGH);
 
-    delay(500);  // Задержка для разрядки
+    delayMicroseconds(500);  // Задержка для разрядки
 
     // Закрываем транзисторы
     digitalWrite(trnPin1, LOW);
