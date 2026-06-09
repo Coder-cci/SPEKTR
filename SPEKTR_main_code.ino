@@ -210,7 +210,7 @@ void startCharging() {
             else lcd.print(" ");
         }
         lcd.print("]");
-        delay(400); // Общее время зарядки ~6 сек
+        delay(500); // Общее время зарядки ~8 сек
     }
 
     digitalWrite(chrgTransPin, LOW);    // Завершение зарядки
